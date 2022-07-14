@@ -110,7 +110,7 @@ export default function App() {
             <Typography gutterBottom variant="h5" component="div">
               The Black Cat
             </Typography>
-            <Typography style={{fontSize:17}} variant="body2" color="text.secondary">
+            <Typography style={{fontSize:17}}git variant="body2" color="text.secondary">
               For the most wild, yet most homely narrative which I am about to pen, I neither expect nor solicit belief.
             </Typography>
           </CardContent>
