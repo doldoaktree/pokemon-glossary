@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { makeStyles } from '@mui/material';
+import { createTheme, makeStyles } from '@mui/material';
 import Typography from '@mui/material';
 import { fontSize } from '@mui/system';
 import { isClassExpression } from 'typescript';
 
-const useStyles = makeStyles({
-    Typography: {
-       fontSize: 12,
-    }
+const theme = createTheme ({
+    typography: {
+       fontSize: 5,
+    },
 });
 
 export default function App() {
-    const classes = useStyles();
+    const classes = theme();
     return(
         <Typography
-        className={classes.typographyJenSize}
-        variant='body2'
+            className={classes.typography}
+            variant='body2'
         >
-
+            
         </Typography>
     );
 }
