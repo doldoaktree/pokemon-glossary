@@ -73,6 +73,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   flex-grow: 1;
+  flex-direction: row;
 }
 
 .card {
