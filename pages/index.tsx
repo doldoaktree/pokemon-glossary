@@ -1,52 +1,14 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import {Container, Box, Stack} from '@mui/material';
 import Sidebar from '../static/components/sidebar';
 import Navbar from '../static/components/navbar';
 import dataOfCharacters from '../static/data';
+import MediaCard from '../static/components/mediacard';
+import PrimarySearchAppBar from '../static/components/search';
 
-
-
-function MediaCard(props: TypeOfValues) {
-
-  const {image, name, description} = props;
-  return (
-    <Card sx={{ maxWidth: 220, 
-                boxShadow:3,
-                borderRadius:2,
-                p:2,
-                minWidth:85,
-            }}>
-      <CardMedia 
-        sx={{width:96}}
-        component="img"
-        height='96'
-        image={image}
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>   
-  );
-}
-
-export interface TypeOfValues {
+interface TypeOfValues {
   characterId?: number,
   name: string,
   image: string,
@@ -55,34 +17,44 @@ export interface TypeOfValues {
 
 type Props = { items: TypeOfValues[] };
 
-function MapChars(props: Props) {
+function MapChars(props: Props):any {
   const { items } = props;
   const listOfCharacters = items.map((value, index) => {
     const {description, name, image} = value;
     return (
-      <div key={index}> 
-          <MediaCard description={description} name={name} image={image} />
-      </div>
+      <>
+        <MediaCard key={index} description={description} name={name} image={image} />
+      </>
     );
   });
 
-  return (
-     <div>{listOfCharacters}</div>
-  )
+  return listOfCharacters;
 }
 
 function App() {
   return (
-    <Container>
-      <Sidebar />
-      <Navbar />
-      <h1>Pokemon</h1>
-      <Box bgcolor='skyblue'>
-        <MapChars items={dataOfCharacters}/>
-       <Button variant='contained' color='primary'>I'm Benjamin</Button>
-       <Button variant='contained' color='secondary'>I'm Benjamin</Button>
-      </Box>
-    </Container>
+    <Box sx={{ bgcolor:'#D4D4D4'}}>
+        <Stack sx={{ bgcolor:'yellow'}}>
+          what is in here?
+        </Stack>
+        <PrimarySearchAppBar />
+        {/* <Sidebar /> */}
+      <Container sx={{bgcolor:'skyblue'}}>
+       
+          <h1>Pokemon</h1>
+          <Box sx={{
+            bgcolor:'skyblue',
+            height:'100vh',
+            display:'flex',
+            flexWrap: 'wrap',
+            fontWeight: 'bold',
+            justifyContent: 'space-evenly'
+          }}   
+          >
+            <MapChars items={dataOfCharacters}/>
+          </Box>
+      </Container>
+    </Box>
   );
 }
 export default App;
