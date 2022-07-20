@@ -1,124 +1,86 @@
 import * as React from 'react';
-import ReactDOM  from 'react-dom';
 import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Grid } from '@mui/material';
-import styles from '../styles/Home.module.css'
-import { Container } from '@mui/system';
+import {Container, Box, Stack} from '@mui/material';
+import Sidebar from '../static/components/sidebar';
+import Navbar from '../static/components/navbar';
+import dataOfCharacters from '../static/data';
 
-export default function App() {
-  return (    
-    <Container className={styles.container}>
-      <Grid container>
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="200"
-            image="static\images\cards\dog-in-hoodie.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Donkey Salad
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Ocean, sky, snow and ice - minute greens and giant blues - dance a delicate dance in this evocative portrayal of the life cycle of an iceberg.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
 
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="230"
-            image="static\images\cards\dingo.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Infant Salad
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              My immediate purpose is to place before the world, plainly, succinctly, and without comment, a series of mere household events. 
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+function MediaCard(props: TypeOfValues) {
 
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="230"
-            image="static\images\cards\ricky.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Black Cat
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              For the most wild, yet most homely narrative which I am about to pen, I neither expect nor solicit belief.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="230"
-            image="static\images\cards\ricky.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Black Cat
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              For the most wild, yet most homely narrative which I am about to pen, I neither expect nor solicit belief.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="230"
-            image="static\images\cards\ricky.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Black Cat
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              For the most wild, yet most homely narrative which I am about to pen, I neither expect nor solicit belief.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-
-        <CardActionArea className={styles.card}>
-          <CardMedia
-            component="img"
-            height="230"
-            image="static\images\cards\ricky.jpg"
-            alt="green iguana"
-          />
-          <CardContent className={styles.code}>
-            <Typography gutterBottom variant="h5" component="div">
-              The Black Cat
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              For the most wild, yet most homely narrative which I am about to pen, I neither expect nor solicit belief.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Grid>
-    </Container>
+  const {image, name, description} = props;
+  return (
+      <Card sx={{ maxWidth: 220, 
+                  bgcolor: 'background.paper',
+                  boxShadow:3,
+                  borderRadius:2,
+                  p:2,
+                  minWidth:85,
+              }}>
+        <CardMedia 
+          sx={{width:96}}
+          component="img"
+          height='96'
+          image={image}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Share</Button>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+    </Card>
   );
 }
 
+export interface TypeOfValues {
+  characterId: number,
+  name: string,
+  image: string,
+  description: string
+}
 
+type Props = { items: TypeOfValues[] };
 
+function MapChars(props: Props) {
+  const { items } = props;
+  const listOfCharacters = items.map((value, index) => {
+    return (
+      <div key={index}>
+        <MediaCard description={value.description} characterId={value.characterId} name={value.name} image={value.image} />
+      </div>
+    );
+  });
 
+  return (
+     <div>{listOfCharacters}</div>
+  )
+}
 
+function App() {
+  return (
+  <Container>
+    <Box bgcolor='skyblue'>
+      <Stack direction="column">
+        <Sidebar />
+        <Navbar />
+        <h1>Pokemon</h1>
+        <MapChars items={dataOfCharacters} />
+      </Stack>
+    </Box>
+  </Container>
+  );
+}
+export default App;
