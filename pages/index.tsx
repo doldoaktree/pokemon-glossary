@@ -1,9 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import {Container, Box, Stack} from '@mui/material';
-import Sidebar from '../static/components/sidebar';
-import Navbar from '../static/components/navbar';
 import dataOfCharacters from '../static/data';
 import MediaCard from '../static/components/mediacard';
 import PrimarySearchAppBar from '../static/components/search';
@@ -11,6 +7,7 @@ import PrimarySearchAppBar from '../static/components/search';
 interface TypeOfValues {
   characterId?: number,
   name: string,
+  power: string,
   image: string,
   description: string
 }
@@ -20,10 +17,10 @@ type Props = { items: TypeOfValues[] };
 function MapChars(props: Props):any {
   const { items } = props;
   const listOfCharacters = items.map((value, index) => {
-    const {description, name, image} = value;
+    const {description, name, power, image} = value;
     return (
       <>
-        <MediaCard key={index} description={description} name={name} image={image} />
+        <MediaCard key={index} description={description} name={name} power={power} image={image} />
       </>
     );
   });
@@ -32,15 +29,14 @@ function MapChars(props: Props):any {
 }
 
 function App() {
+ 
   return (
     <Box sx={{ bgcolor:'#D4D4D4'}}>
         <Stack sx={{ bgcolor:'yellow'}}>
           what is in here?
-        </Stack>
-        <PrimarySearchAppBar />
-        {/* <Sidebar /> */}
+        </Stack> 
+        <PrimarySearchAppBar />    
       <Container sx={{bgcolor:'skyblue'}}>
-       
           <h1>Pokemon</h1>
           <Box sx={{
             bgcolor:'skyblue',

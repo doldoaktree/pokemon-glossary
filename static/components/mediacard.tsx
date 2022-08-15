@@ -7,13 +7,14 @@ import Typography from '@mui/material/Typography';
 export interface TypeOfValues {
     characterId?: number,
     name: string,
+    power: string,
     image: string,
     description: string
   }
 
 export default function MediaCard(props: TypeOfValues) {
 
-    const {image, name, description} = props;
+    const {image, name, power, description} = props;
     return (
       <Card sx={{ maxWidth: 220, 
                   height: 280,
@@ -31,15 +32,16 @@ export default function MediaCard(props: TypeOfValues) {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" color='primary.main'>
             {name}
+          </Typography>
+          <Typography gutterBottom variant="subtitle1" color='secondary.main' component="div">
+            {power}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {description}
           </Typography>
         </CardContent>
-        <CardActions>
-        </CardActions>
       </Card>   
     );
   }
