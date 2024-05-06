@@ -1,5 +1,8 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
+import Link from "next/link";
+import pages from ".";
+import App from ".";
 
 export default function Dashboard() {
   return (
@@ -16,6 +19,10 @@ export default function Dashboard() {
       </div>
 
       <h1 className={styles.centeredText}>Page Under Construction</h1>
+    <h2>
+    <Link href={"/"}>Back to Home</Link>
+    </h2>
     </div>
+    
   );
 }
