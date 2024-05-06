@@ -1,15 +1,20 @@
-import Image from 'next/image';
+import ResponseData from "../response-model/response-data";
 
-export default function PokemonDetailsPage(){
-    return(
-        <div>
-        <h1>Page Under Construction</h1>
-        <Image
-        src="/path/to/your/image.jpg" // Replace with the path to your image file
-        alt="Description of the image" // Replace with a description of the image>
-        />
-        </div>
-    )
-       
-   
+export default function PokemonHandler({
+  pokemonData,
+}: {
+  pokemonData: ResponseData;
+}) {
+  console.log(pokemonData);
+
+  return <div>{pokemonData.forms[0].name}</div>;
+}
+
+export async function GetServerSideProps() {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon/1");
+  const data = response.json;
+  console.log(data)
+  return {
+    props:{pokemonData:data}
+  }
 }

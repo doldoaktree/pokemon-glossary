@@ -3,6 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import { GetServerSideProps } from "./pokemon-details-page";
 
 export interface TypeOfValues {
   characterId?: number;
@@ -14,6 +15,10 @@ export interface TypeOfValues {
 
 export default function MediaCard(props: TypeOfValues) {
   const { image, name, power, description } = props;
+  const props1 = async () => {
+    return await GetServerSideProps();
+  };
+  console.log(props1);
   return (
     <Card
       sx={{
@@ -54,7 +59,7 @@ export default function MediaCard(props: TypeOfValues) {
           {description}
         </Typography>
       </CardContent>
-      <Link href="api/momo">Details</Link>
+      <Link href="https://pokeapi.co/api/v2/pokemon/1">Pokemon Details</Link>
     </Card>
   );
 }
