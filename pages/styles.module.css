@@ -111,6 +111,17 @@
   margin-left: 0.5rem;
 }
 
+.container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 75vh; /* Set container height to full viewport height */
+}
+
+.centeredText {
+  text-align: center; /* Center text horizontally */
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

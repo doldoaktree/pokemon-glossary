@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Container, Box, Stack} from '@mui/material';
+import {Container, Box, Stack, Link} from '@mui/material';
 import dataOfCharacters from './data.js';
 import MediaCard from './components/mediacard';
 import PrimarySearchAppBar from './components/search';
@@ -48,6 +48,7 @@ function App() {
           }}   
           >
             <MapChars items={dataOfCharacters}/>
+            <Link href="/dashboard">← Dashboard</Link>
           </Box>
       </Container>
     </Box>
