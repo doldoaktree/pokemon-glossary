@@ -1,22 +1,3 @@
-// import { Card } from "@mui/material";
-// import { makeStyles } from "@mui/material";
-// import CardActionArea from "@mui/material/CardActionArea";
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Button from '@mui/material/Button';
-
-// export default function Cards() {
-//     return (
-//         <Card>
-//             <CardActionArea>
-//                 <CardMedia image='https://raw.githubusercontent.com/pokeAPI/sprites/master/sprites/pokemon/8.png'></CardMedia>
-//                 <CardContent>Momo is Sleeping</CardContent>
-//             </CardActionArea>
-//         </Card>
-//     ) 
-// }
-
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Container, Box, Stack} from '@mui/material';
-import dataOfCharacters from '../static/data';
-import MediaCard from '../static/components/mediacard';
-import PrimarySearchAppBar from '../static/components/search';
+import dataOfCharacters from './data.js';
+import MediaCard from './components/mediacard';
+import PrimarySearchAppBar from './components/search';
 
 interface TypeOfValues {
   characterId?: number,
