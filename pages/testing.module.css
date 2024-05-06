@@ -1,8 +1,0 @@
-.page {
-    display: flex;
-    flex-direction: row;
-}
-
-.row {
-    flex-grow: 1;
-}
