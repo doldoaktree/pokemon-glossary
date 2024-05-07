@@ -1,24 +1,26 @@
+import { Button, CardActions } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Link from "next/link";
-import { GetServerSideProps } from "./pokemon-details-page";
+import { PageItem } from "..";
 
 export interface TypeOfValues {
-  characterId?: number;
+  id:number;
+  forms: PageItem [];
+  // characterId?: number;
   name: string;
-  power: string;
-  image: string;
-  description: string;
+  url:string;
+  // power: string;
+  // image: string;
+  // description: string;
 }
 
 export default function MediaCard(props: TypeOfValues) {
-  const { image, name, power, description } = props;
-  const props1 = async () => {
-    return await GetServerSideProps();
-  };
-  console.log(props1);
+  const { name, url, forms} = props;
+
+  const href = `/pokemons/${props.url}`;
+
   return (
     <Card
       sx={{
@@ -35,7 +37,7 @@ export default function MediaCard(props: TypeOfValues) {
         sx={{ width: 96, mx: "auto" }}
         component="img"
         height="96"
-        image={image}
+        // image={image}
         alt="green iguana"
       />
       <CardContent>
@@ -53,13 +55,17 @@ export default function MediaCard(props: TypeOfValues) {
           color="secondary.main"
           component="div"
         >
-          {power}
+          {/* {power} */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {/* {description} */}
         </Typography>
       </CardContent>
-      <Link href="https://pokeapi.co/api/v2/pokemon/1">Pokemon Details</Link>
+      <CardActions>
+        <Button href={href} size="small" variant="contained">
+          Learn More
+        </Button>
+      </CardActions>
     </Card>
   );
 }
