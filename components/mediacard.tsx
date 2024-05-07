@@ -3,23 +3,24 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { PageItem } from "..";
+import { useEffect, useState } from "react";
+import { PokemonDetails } from "./pokemon-details";
 
-export interface TypeOfValues {
-  id:number;
-  forms: PageItem [];
-  // characterId?: number;
+export interface CardProps {
   name: string;
-  url:string;
-  // power: string;
-  // image: string;
-  // description: string;
+  url: string;
 }
 
-export default function MediaCard(props: TypeOfValues) {
-  const { name, url, forms} = props;
+export default function MediaCard(props: CardProps) {
+  const { name, url } = props;
+  const [details, setDetails] = useState<undefined | PokemonDetails>();
+  const detailsUrl = `pokemons/${details?.id}`
 
-  const href = `/pokemons/${props.url}`;
+  useEffect(() => {
+    fetch(url)
+      .then((x) => x.json())
+      .then((x)=> setDetails(x));
+  }, [url]);
 
   return (
     <Card
@@ -37,7 +38,7 @@ export default function MediaCard(props: TypeOfValues) {
         sx={{ width: 96, mx: "auto" }}
         component="img"
         height="96"
-        // image={image}
+        image={details?.sprites.front_default}
         alt="green iguana"
       />
       <CardContent>
@@ -55,14 +56,14 @@ export default function MediaCard(props: TypeOfValues) {
           color="secondary.main"
           component="div"
         >
-          {/* {power} */}
+          {/* {id} */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {/* {description} */}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button href={href} size="small" variant="contained">
+        <Button href={detailsUrl} size="small" variant="contained">
           Learn More
         </Button>
       </CardActions>
