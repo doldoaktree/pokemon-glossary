@@ -38,8 +38,8 @@ function App() {
             justifyContent: "space-evenly",
           }}
         >
-          {allPokemons.map((pokemon) => (
-            <MediaCard {...pokemon} />
+          {allPokemons.map((pokemon, index) => (
+            <MediaCard {...pokemon} key={index}/>
           ))}
           <Link href="/dashboard">← Dashboard</Link>
         </Box>
