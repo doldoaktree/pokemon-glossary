@@ -3,6 +3,7 @@ import InputBase from "@mui/material/InputBase";
 import NativeSelect from "@mui/material/NativeSelect";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
+import { SetStateAction, useState } from "react";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "label + &": {
@@ -37,25 +38,32 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-// type Moves={
-//   { target: { value: React.SetStateAction<string> } }
-// }
+interface Moves {
+  target: { value: string };
+}
 export default function Dropdown() {
-  const [selectedOption, setSelectedOption] = React.useState("default");
-  const handleChange = (event :{ target: { value: React.SetStateAction<string> } }) => {
-    setSelectedOption(event.target.value);
-    console.log(selectedOption)
+  const [selectedOption, setSelectedOption] = useState("default");
+
+  const handleChange = (event: Moves) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+
+    console.log(selectedValue);
+  
+    return selectedOption;
+  
+  
+  
   };
   return (
     <div>
       <FormControl sx={{ m: 1 }} variant="standard">
         <NativeSelect
-          id="customized-select"
-          value={setSelectedOption}
+          id="select-moves"
+          value={selectedOption}
           onChange={handleChange}
           input={<BootstrapInput />}
         >
-
           <option aria-label="None" value="" />
           <option value={"tackle"}>tackle</option>
           <option value={"growl"}>growl</option>

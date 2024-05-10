@@ -1,16 +1,8 @@
-import {
-  Box,
-  Container,
-  Link,
-  Typography,
-  createMuiTheme,
-} from "@mui/material";
+import { Box, Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import MediaCard from "../components/mediacard";
-
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@emotion/react";
 import PrimarySearchAppBar from "../components/primary-search-app-bar";
+import Dropdown from "../components/dropdown";
 
 type PokemonHint = {
   name: string;
@@ -35,6 +27,7 @@ function App() {
     <Box sx={{ bgcolor: "#D4D4D4" }}>
       <Container sx={{ bgcolor: "skyblue" }}>
         <PrimarySearchAppBar />
+
         <Box>Space More</Box>
         <Box>Space More</Box>
         <Box>Space More</Box>

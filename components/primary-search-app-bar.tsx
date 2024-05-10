@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import Dropdown from './customized-selects';
+import Dropdown from './dropdown';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 
@@ -33,7 +33,7 @@ export default function PrimarySearchAppBar() {
           >
             Filter by
           </Typography>
-          <Dropdown props={"flamethrower"}/>
+          <Dropdown />
           <Stack spacing={2} direction="row">
             <Button 
               variant="contained"
