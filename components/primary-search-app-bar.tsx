@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import CustomizedSelects from './customized-selects';
+import Dropdown from './customized-selects';
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 
@@ -31,9 +31,9 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Pokemon
+            Filter by
           </Typography>
-          <CustomizedSelects />
+          <Dropdown props={"flamethrower"}/>
           <Stack spacing={2} direction="row">
             <Button 
               variant="contained"

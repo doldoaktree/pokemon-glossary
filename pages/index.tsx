@@ -1,7 +1,16 @@
+import {
+  Box,
+  Container,
+  Link,
+  Typography,
+  createMuiTheme,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import MediaCard from "../components/mediacard";
-import { Box, Container, Link, Stack } from "@mui/material";
-import PrimarySearchAppBar from "../components/search";
+
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@emotion/react";
+import PrimarySearchAppBar from "../components/primary-search-app-bar";
 
 type PokemonHint = {
   name: string;
@@ -24,10 +33,12 @@ function App() {
 
   return (
     <Box sx={{ bgcolor: "#D4D4D4" }}>
-      <Stack sx={{ bgcolor: "yellow" }}>what is in here?</Stack>
-      <PrimarySearchAppBar />
       <Container sx={{ bgcolor: "skyblue" }}>
-        <h1>Pokemon</h1>
+        <PrimarySearchAppBar />
+        <Box>Space More</Box>
+        <Box>Space More</Box>
+        <Box>Space More</Box>
+        <Typography variant="h3"> Pokemon</Typography>
         <Box
           sx={{
             bgcolor: "skyblue",
@@ -39,7 +50,7 @@ function App() {
           }}
         >
           {allPokemons.map((pokemon, index) => (
-            <MediaCard {...pokemon} key={index}/>
+            <MediaCard {...pokemon} key={index} />
           ))}
           <Link href="/dashboard">← Dashboard</Link>
         </Box>

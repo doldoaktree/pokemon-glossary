@@ -1,11 +1,8 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import NativeSelect from "@mui/material/NativeSelect";
 import InputBase from "@mui/material/InputBase";
+import NativeSelect from "@mui/material/NativeSelect";
+import { styled } from "@mui/material/styles";
+import * as React from "react";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "label + &": {
@@ -40,46 +37,29 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSelects() {
-  const [power, setPower] = React.useState("");
-  const handleChange = (event: { target: { value: string } }) => {
-    setPower(event.target.value);
+// type Moves={
+//   { target: { value: React.SetStateAction<string> } }
+// }
+export default function Dropdown() {
+  const [selectedOption, setSelectedOption] = React.useState("default");
+  const handleChange = (event :{ target: { value: React.SetStateAction<string> } }) => {
+    setSelectedOption(event.target.value);
+    console.log(selectedOption)
   };
   return (
     <div>
       <FormControl sx={{ m: 1 }} variant="standard">
-        <InputLabel htmlFor="demo-customized-textbox">Age</InputLabel>
-        <BootstrapInput id="demo-customized-textbox" />
-      </FormControl>
-      <FormControl sx={{ m: 1 }} variant="standard">
-        <InputLabel id="demo-customized-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={power}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl sx={{ m: 1 }} variant="standard">
-        <InputLabel htmlFor="demo-customized-select-native">Age</InputLabel>
         <NativeSelect
-          id="demo-customized-select-native"
-          value={power}
+          id="customized-select"
+          value={setSelectedOption}
           onChange={handleChange}
           input={<BootstrapInput />}
         >
+
           <option aria-label="None" value="" />
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          <option value={"tackle"}>tackle</option>
+          <option value={"growl"}>growl</option>
+          <option value={"flamethrower"}>flamethrower</option>
         </NativeSelect>
       </FormControl>
     </div>
