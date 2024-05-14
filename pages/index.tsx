@@ -2,7 +2,6 @@ import { Box, Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import MediaCard from "../components/mediacard";
 import PrimarySearchAppBar from "../components/primary-search-app-bar";
-import Dropdown from "../components/dropdown";
 
 type PokemonHint = {
   name: string;
@@ -27,11 +26,13 @@ function App() {
     <Box sx={{ bgcolor: "#D4D4D4" }}>
       <Container maxWidth='lg' sx={{bgcolor: "skyblue"}}>
         <PrimarySearchAppBar />
-
-        <Box>Space More</Box>
-        <Box>Space More</Box>
-        <Box>Space More</Box>
-        <Typography variant="h3"> Pokemon</Typography>
+        <Typography variant="h3" sx={{
+          paddingTop: '70px', 
+          paddingBottom: '10px', 
+          alignContent: 'center',
+          display: 'flex',
+          justifyContent: 'center'
+          }}> Pokemon</Typography>
         <Box
           sx={{
             bgcolor: "skyblue",
@@ -40,6 +41,7 @@ function App() {
             flexWrap: "wrap",
             fontWeight: "bold",
             justifyContent: "space-evenly",
+            rowGap: '20px'
           }}
         >
           {allPokemons.map((pokemon, index) => (

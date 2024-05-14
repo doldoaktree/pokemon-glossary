@@ -1,21 +1,24 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
-import Dropdown from './dropdown';
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import MenuIcon from "@mui/icons-material/Menu";
+import Dropdown from "./dropdown";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 export default function PrimarySearchAppBar() {
-  
   return (
-    <Box sx={{ flexGrow: 1, 
-               alignItems: 'center'}}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        alignItems: "center",
+      }}
+    >
       <AppBar>
-        <Toolbar sx={{ display:'flex', justifyContent:'center'}}>
+        <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
           <IconButton
             size="large"
             edge="start"
@@ -29,24 +32,24 @@ export default function PrimarySearchAppBar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: "none", sm: "block" } }}
           >
             Filter by
           </Typography>
           <Dropdown />
           <Stack spacing={2} direction="row">
-            <Button 
+            <Button
               variant="contained"
-              color='secondary' 
+              color="secondary"
               onClick={() => {
-                alert('I am clicked');
+                alert("I am clicked");
               }}
-              >
-                Click me!
+            >
+              Click me!
             </Button>
           </Stack>
-         </Toolbar>
-        </AppBar>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 }
