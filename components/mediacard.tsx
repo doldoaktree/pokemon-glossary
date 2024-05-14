@@ -45,12 +45,13 @@ export default function MediaCard(props: CardProps) {
   return (
     <Card
       sx={{
-        maxWidth: 220,
+        maxWidth: 180,
+        minWidth: 180,
         height: 280,
         boxShadow: 3,
         borderRadius: 2,
         p: 2,
-        minWidth: 85,
+
         bgcolor: "#F6CFFC",
       }}
     >

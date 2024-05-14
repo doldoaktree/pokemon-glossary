@@ -25,7 +25,7 @@ function App() {
 
   return (
     <Box sx={{ bgcolor: "#D4D4D4" }}>
-      <Container sx={{ bgcolor: "skyblue" }}>
+      <Container maxWidth='lg' sx={{bgcolor: "skyblue"}}>
         <PrimarySearchAppBar />
 
         <Box>Space More</Box>
@@ -45,8 +45,8 @@ function App() {
           {allPokemons.map((pokemon, index) => (
             <MediaCard {...pokemon} key={index} />
           ))}
-          <Link href="/dashboard">← Dashboard</Link>
         </Box>
+        <Link href="/dashboard">← Dashboard</Link>
       </Container>
     </Box>
   );
