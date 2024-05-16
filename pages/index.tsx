@@ -2,13 +2,16 @@ import { Box, Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import MediaCard from "../components/mediacard";
 import PrimarySearchAppBar from "../components/primary-search-app-bar";
+import { Head } from "next/document";
+import styles from "../styles/Home.module.css";
+import Layout from "../components/layout";
 
 type PokemonHint = {
   name: string;
   url: string;
 };
 
-function App() {
+function Home() {
   const [allPokemons, setAllPokemons] = useState<PokemonHint[]>([]);
 
   useEffect(() => {
@@ -21,27 +24,43 @@ function App() {
       setAllPokemons(data.results);
     });
   }, []);
-
   return (
-    <Box sx={{ bgcolor: "#D4D4D4" }}>
-      <Container maxWidth='lg' sx={{bgcolor: "skyblue"}}>
+    <Box
+      sx={{
+        bgcolor: "#D4D4D4",
+        height: "100%",
+      }}
+    >
+      <Container
+        maxWidth="lg"
+        sx={{
+          bgcolor: "skyblue",
+
+          height: "100%",
+        }}
+      >
         <PrimarySearchAppBar />
-        <Typography variant="h3" sx={{
-          paddingTop: '70px', 
-          paddingBottom: '10px', 
-          alignContent: 'center',
-          display: 'flex',
-          justifyContent: 'center'
-          }}> Pokemon</Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            paddingBottom: "10px",
+            alignContent: "center",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          Pokemon
+        </Typography>
         <Box
           sx={{
             bgcolor: "skyblue",
-            height: "100vh",
             display: "flex",
             flexWrap: "wrap",
             fontWeight: "bold",
-            justifyContent: "space-evenly",
-            rowGap: '20px'
+            justifyContent: "space-between",
+            rowGap: "20px",
+            overflow: "scroll",
+            height: "calc(100vh - 140px)",
           }}
         >
           {allPokemons.map((pokemon, index) => (
@@ -53,4 +72,4 @@ function App() {
     </Box>
   );
 }
-export default App;
+export default Home;
