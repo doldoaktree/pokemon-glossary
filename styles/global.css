@@ -20,7 +20,8 @@ body {
 }
 div#__next {
   height: 100%;
-}
+  background-color:rebeccapurple;
+  }
 
 * {
   box-sizing: border-box;

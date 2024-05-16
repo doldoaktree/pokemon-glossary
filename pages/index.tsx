@@ -25,12 +25,7 @@ function Home() {
     });
   }, []);
   return (
-    <Box
-      sx={{
-        bgcolor: "#D4D4D4",
-        height: "100%",
-      }}
-    >
+
       <Container
         maxWidth="lg"
         sx={{
@@ -69,7 +64,7 @@ function Home() {
         </Box>
         <Link href="/dashboard">← Dashboard</Link>
       </Container>
-    </Box>
+  
   );
 }
 export default Home;
