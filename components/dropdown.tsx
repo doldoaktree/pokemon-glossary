@@ -2,8 +2,7 @@ import FormControl from "@mui/material/FormControl";
 import InputBase from "@mui/material/InputBase";
 import NativeSelect from "@mui/material/NativeSelect";
 import { styled } from "@mui/material/styles";
-import * as React from "react";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "label + &": {
@@ -41,19 +40,14 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 interface Moves {
   target: { value: string };
 }
+
 export default function Dropdown() {
   const [selectedOption, setSelectedOption] = useState("default");
 
   const handleChange = (event: Moves) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
-
-    console.log(selectedValue);
-  
     return selectedOption;
-  
-  
-  
   };
   return (
     <div>
@@ -68,6 +62,7 @@ export default function Dropdown() {
           <option value={"tackle"}>tackle</option>
           <option value={"growl"}>growl</option>
           <option value={"flamethrower"}>flamethrower</option>
+          <option value={"razor-wind"}>razor-wind</option>
         </NativeSelect>
       </FormControl>
     </div>

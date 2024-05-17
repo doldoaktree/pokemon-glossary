@@ -10,6 +10,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 export default function PrimarySearchAppBar() {
+
   return (
     <Box
       sx={{
@@ -45,7 +46,7 @@ export default function PrimarySearchAppBar() {
                 alert("I am clicked");
               }}
             >
-              Click me!
+              Search
             </Button>
           </Stack>
         </Toolbar>

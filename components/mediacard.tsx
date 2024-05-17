@@ -11,6 +11,11 @@ export interface CardProps {
   url: string;
 }
 
+interface MoveProps {
+  id: number;
+  moves: { move: { name: string } }[];
+}
+
 export default function MediaCard(props: CardProps) {
   const { name, url } = props;
   const [details, setDetails] = useState<undefined | PokemonDetails>();
@@ -18,17 +23,15 @@ export default function MediaCard(props: CardProps) {
 
   const [id, setId] = useState();
   const [move, setMove] = useState();
-  useEffect(() => {
-    fetch(url)
-      .then((x) => x.json())
-      .then((x) => setDetails(x));
-  }, [url]);
 
   useEffect(() => {
     fetch(url)
       .then((x) => x.json())
-      .then();
-  });
+      .then((x) => {
+        setDetails(x);
+        console.log(details);
+      });
+  }, [url]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,16 +45,16 @@ export default function MediaCard(props: CardProps) {
       console.log(move);
     });
   });
+
   return (
     <Card
       sx={{
         maxWidth: 180,
         minWidth: 180,
-        height: 280,
+        height: 340,
         boxShadow: 3,
         borderRadius: 2,
         p: 2,
-
         bgcolor: "#F6CFFC",
       }}
     >
@@ -77,7 +80,6 @@ export default function MediaCard(props: CardProps) {
           color="secondary.main"
           component="div"
         >
-          {" "}
           Power: {move}
         </Typography>
         <Typography variant="body2" color="text.secondary">
