@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import MediaCard from "./mediacard";
-import Layout from "./layout";
 
 type PokemonHint = {
   name: string;
