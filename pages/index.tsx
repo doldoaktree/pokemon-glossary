@@ -1,29 +1,9 @@
 import { Box, Container, Link, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import MediaCard from "../components/mediacard";
+import PokemonList from "../components/pokemon-list";
 import PrimarySearchAppBar from "../components/primary-search-app-bar";
 
-type PokemonHint = {
-  name: string;
-  url: string;
-};
-
 function Home() {
-  const [allPokemons, setAllPokemons] = useState<PokemonHint[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
-      const responseData = await response.json();
-      return responseData;
-    };
-    fetchData().then((data) => {
-      setAllPokemons(data.results);
-      console.log(allPokemons)
-    });
-  }, []);
-  
-return (
+  return (
     <Container
       maxWidth="lg"
       sx={{
@@ -55,9 +35,7 @@ return (
           height: "calc(100vh - 140px)",
         }}
       >
-        {allPokemons.map((pokemon, index) => (
-          <MediaCard {...pokemon} key={index} />
-        ))}
+        <PokemonList/>
       </Box>
       <Link href="/dashboard">← Dashboard</Link>
     </Container>
