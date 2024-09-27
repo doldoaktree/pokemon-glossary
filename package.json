@@ -1,6 +1,6 @@
 {
   "name": "pokemon-glossary",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "push": "npm version major && git add . && git commit -m 'updated version' && git push"
-
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
