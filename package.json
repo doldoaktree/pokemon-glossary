@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "push": "npm version major && git add . && git commit -m 'updated version' && git push"
+
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
