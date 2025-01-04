@@ -1,23 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import PrimarySearchAppBar from "../components/dashboard/search-bar";
+import SearchBar from "../components/dashboard/search-bar";
 
 export default function Dashboard() {
   return (
     <div>
       <h1 className={styles.centeredText}>Dashboard Page</h1>
-      <div className={styles.container}>
-        <Image
-          src="/construction-worker.jpg" // Replace with the path to your image file
-          alt="Under construction" // Replace with a description of the image>
-          width={300} // Specify the width of the image
-          height={520} // Specify the height of the image
-        />
-      </div>
+      <SearchBar />
       <h1 className={styles.centeredText}>Page Under Construction</h1>
-      <h2>
+      <div className={styles.container}>
         <Link href={"/"}>Back to Home</Link>
-      </h2>
+      </div>
     </div>
   );
 }

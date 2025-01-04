@@ -6,8 +6,13 @@ type PokemonHint = {
   url: string;
 };
 
-function PokemonList() {
+type Power = {
+  selectedPower: string;
+};
+
+function PokemonList({ selectedPower }: Power) {
   const [allPokemons, setAllPokemons] = useState<PokemonHint[]>([]);
+  const [filterPower, setFilterPower] = useState();
 
   useEffect(() => {
     const fetchData = async () => {

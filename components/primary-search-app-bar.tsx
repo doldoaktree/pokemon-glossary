@@ -27,7 +27,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
-      "Roboto",
+      "bRoboto",
       '"Helvetica Neue"',
       "Arial",
       "sans-serif",
@@ -43,13 +43,16 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+type Change = { selectedValue: string; onSelectedValueChange: React.Dispatch<React.SetStateAction<string>> };
+
+export default function PrimarySearchAppBar(selectedPower: Change) {
   const [selectedValue, setSelectedValue] = useState("");
   const handleInputChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setSelectedValue(event.target.value);
   };
+
   const showAlert = () => {
     alert(`You have selected ${selectedValue}.`);
   };
@@ -77,7 +80,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            Filter by
+            Filter by Power
           </Typography>
           <FormControl sx={{ m: 1 }} variant="standard">
             <NativeSelect
@@ -91,6 +94,7 @@ export default function PrimarySearchAppBar() {
               <option value={"growl"}>growl</option>
               <option value={"flamethrower"}>flamethrower</option>
               <option value={"razor-wind"}>razor-wind</option>
+              <option value={"swords-dance"}>swords-dance</option>
             </NativeSelect>
           </FormControl>
           <Stack spacing={2} direction="row">
