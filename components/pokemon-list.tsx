@@ -14,17 +14,36 @@ function PokemonList({ selectedPower }: Power) {
   const [allPokemons, setAllPokemons] = useState<PokemonHint[]>([]);
   const [filterPower, setFilterPower] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
-      const responseData = await response.json();
-      return responseData;
-    };
-    fetchData().then((data) => {
-      setAllPokemons(data.results);
-      console.log(allPokemons);
-    });
-  }, []);
+  const power = "pound";
+  if (power) {
+    useEffect(() => {
+      const fetchData = async (power: string) => {
+        const response = await fetch(`https://pokeapi.co/api/v2/move/${power}`);
+
+        const responseData = await response.json();
+
+        return responseData;
+      };
+      fetchData(power).then((data) => {
+        setAllPokemons(data.learned_by_pokemon);
+        console.log(allPokemons);
+      });
+    }, []);
+  } else {
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
+
+        const responseData = await response.json();
+
+        return responseData;
+      };
+      fetchData().then((data) => {
+        setAllPokemons(data.results);
+        console.log(allPokemons);
+      });
+    }, []);
+  }
 
   return (
     <>
